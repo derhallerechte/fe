@@ -18,8 +18,24 @@ function App() {
 
   // Spieler laden
   useEffect(() => {
+    const fetchPlayers = async () => {
+      console.log('🔗 API URL:', API_URL);
+      console.log('📡 Fetch von:', `${API_URL}/players`);
+      
+      try {
+        const response = await fetch(`${API_URL}/players`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        setPlayers(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('❌ Fehler:', error);
+        setLoading(false);
+      }
+    };
+    
     fetchPlayers();
-  }, []);
+  }, [API_URL]);  // ← HIER: API_URL hinzufügen
 
   const fetchPlayers = async () => {
     setLoading(true);
