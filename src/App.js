@@ -145,10 +145,9 @@ function App() {
       {/* HEADER */}
       <header className="header">
         <h1>⚽ FC Bayern München Spieler-Datenbank</h1>
-        <p>Verwaltung der Saison 2025/2026 mit MongoDB</p>
+        <p>Verwaltung der Saison 2025/2026</p>
         <div className="stats">
           <span>📊 {players.length} Spieler im Kader</span>
-          <span>📍 {API_URL}</span>
         </div>
       </header>
 
@@ -196,8 +195,6 @@ function App() {
               <p><strong>Position:</strong> {player.position}</p>
               <p><strong>Nationalität:</strong> {player.nationality}</p>
               <p><strong>Alter:</strong> {player.age}</p>
-              {player.since && <p><strong>Seit:</strong> {player.since}</p>}
-              {player.note && <p><strong>Notiz:</strong> {player.note}</p>}
             </div>
             
             <div className={`position-badge ${player.position.toLowerCase()}`}>
@@ -300,7 +297,6 @@ function App() {
 
       {/* FOOTER */}
       <footer className="footer">
-        <p>🔗 Backend: {API_URL} | 🗄️ MongoDB Atlas | ⚛️ React Frontend</p>
         <p>ℹ️ {players.length} Spieler geladen | Letztes Update: {new Date().toLocaleTimeString()}</p>
         <button onClick={fetchPlayers} className="refresh-btn">
           🔄 Aktualisieren
